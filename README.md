@@ -17,7 +17,7 @@
 ## 2. Portas e acessos
 
 - **Portas internas (container):**
-  - `3000/TCP` – Aplicação Chatwoot (Web + API)
+  - `9000/TCP` – Aplicação Chatwoot (Web + API)
 
 - **Portas externas (host):**
   - `9090/TCP` – Acesso ao painel web (ambiente local/produção interna)
