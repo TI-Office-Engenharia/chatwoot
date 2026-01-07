@@ -2,10 +2,7 @@ version: '3'
 
 services:
   base: &base
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: chatwoot-custom:local
+    image: ghcr.io/ti-office-engenharia/chatwoot:develop
     env_file: .env
     volumes:
       - storage_data:/app/storage
