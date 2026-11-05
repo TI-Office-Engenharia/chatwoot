@@ -12,23 +12,21 @@ on:
 jobs:
   # Separate linting jobs for faster feedback
   lint-backend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
           bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rubocop --parallel
 
   security-scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
           bundler-cache: true
       - name: Run Brakeman
         # Non-blocking for now: Brakeman surfaces 35 pre-existing findings
@@ -42,7 +40,7 @@ jobs:
           bundle exec bundle-audit check
 
   lint-frontend:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -57,7 +55,7 @@ jobs:
 
   # Frontend tests run in parallel with backend
   frontend-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -72,7 +70,7 @@ jobs:
 
   # Backend tests with parallelization
   backend-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -110,7 +108,6 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
           bundler-cache: true
 
       - uses: actions/setup-node@v4
